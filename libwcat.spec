@@ -1,14 +1,11 @@
-%define	name	libwcat
-%define	version	1.0
-%define	release	%mkrel 3
-
 %define	major 1
-%define libname	%mklibname wcat %{major}
+%define libname %mklibname wcat %{major}
+%define develname %mklibname wcat -d
 
 Summary:	Library for the watchcat software watchdog
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		libwcat
+Version:	1.0
+Release:	%mkrel 4
 License:	LGPL
 Group:		System/Libraries
 URL:		http://oss.digirati.com.br/watchcatd/
@@ -29,13 +26,14 @@ libwcat is an API to watchcatd, a software watchdog that uses an
 approach not as drastic as the usual watchdog solutions. It tries
 to kill the locked process only.
 
-%package -n	%{libname}-devel
+%package -n	%{develname}
 Summary:	Static library and header files for the watchcat library
 Group:		Development/C
-Provides:	%{name}-devel = %{version}
+Provides:	%{name}-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}-%{release}
+Obsoletes:	%{mklibname wcat 1 -d}
 
-%description -n	%{libname}-devel
+%description -n	%{develname}
 libwcat is an API to watchcatd, a software watchdog that uses an
 approach not as drastic as the usual watchdog solutions. It tries
 to kill the locked process only.
@@ -76,10 +74,8 @@ ln -s %{name}.so.%{major}.%{version} %{buildroot}%{_libdir}/%{name}.so.%{major}
 %defattr(-,root,root)
 %{_libdir}/*.so.*
 
-%files -n %{libname}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/*.a
-
-
