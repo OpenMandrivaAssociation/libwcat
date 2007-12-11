@@ -5,7 +5,7 @@
 Summary:	Library for the watchcat software watchdog
 Name:		libwcat
 Version:	1.0
-Release:	%mkrel 4
+Release:	%mkrel 5
 License:	LGPL
 Group:		System/Libraries
 URL:		http://oss.digirati.com.br/watchcatd/
