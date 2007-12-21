@@ -10,6 +10,7 @@ License:	LGPL
 Group:		System/Libraries
 URL:		http://oss.digirati.com.br/watchcatd/
 Source0:	http://oss.digirati.com.br/watchcatd/%{name}-%{version}.tar.bz2
+BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
 %description
 libwcat is an API to watchcatd, a software watchdog that uses an
