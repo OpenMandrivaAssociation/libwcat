@@ -63,9 +63,13 @@ install -m644 watchcat.h %{buildroot}%{_includedir}/
 ln -s %{name}.so.%{major}.%{version} %{buildroot}%{_libdir}/%{name}.so
 ln -s %{name}.so.%{major}.%{version} %{buildroot}%{_libdir}/%{name}.so.%{major}
 
+%if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
+%endif
 
+%if %mdkversion < 200900
 %postun -n %{libname} -p /sbin/ldconfig
+%endif
 
 %clean
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
