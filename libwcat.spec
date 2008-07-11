@@ -5,12 +5,13 @@
 Summary:	Library for the watchcat software watchdog
 Name:		libwcat
 Version:	1.0
-Release:	%mkrel 5
+Release:	%mkrel 6
 License:	LGPL
 Group:		System/Libraries
 URL:		http://oss.digirati.com.br/watchcatd/
 Source0:	http://oss.digirati.com.br/watchcatd/%{name}-%{version}.tar.bz2
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root
+Patch0:		libwcat-ldflags.diff
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 libwcat is an API to watchcatd, a software watchdog that uses an
@@ -44,6 +45,7 @@ needed to compile applications that use libwcat.
 %prep
 
 %setup -q -n %{name}-%{version}
+%patch0 -p0
 
 %build
 export CFLAGS="%{optflags} -fPIC"
@@ -51,7 +53,7 @@ export CFLAGS="%{optflags} -fPIC"
 %make 
 
 %install
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 install -d %{buildroot}%{_libdir}
 install -d %{buildroot}%{_includedir}
@@ -72,7 +74,7 @@ ln -s %{name}.so.%{major}.%{version} %{buildroot}%{_libdir}/%{name}.so.%{major}
 %endif
 
 %clean
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 %files -n %{libname}
 %defattr(-,root,root)
