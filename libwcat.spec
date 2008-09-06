@@ -4,13 +4,14 @@
 
 Summary:	Library for the watchcat software watchdog
 Name:		libwcat
-Version:	1.0
-Release:	%mkrel 6
+Version:	1.1
+Release:	%mkrel 1
 License:	LGPL
 Group:		System/Libraries
 URL:		http://oss.digirati.com.br/watchcatd/
-Source0:	http://oss.digirati.com.br/watchcatd/%{name}-%{version}.tar.bz2
+Source0:	http://oss.digirati.com.br/watchcatd/%{name}-%{version}.tar.gz
 Patch0:		libwcat-ldflags.diff
+Patch1:		libwcat-socket_location_fix.diff
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -46,6 +47,7 @@ needed to compile applications that use libwcat.
 
 %setup -q -n %{name}-%{version}
 %patch0 -p0
+%patch1 -p0
 
 %build
 export CFLAGS="%{optflags} -fPIC"
