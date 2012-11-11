@@ -1,0 +1,24 @@
+--- Makefile	2008-08-27 19:05:47.000000000 +0200
++++ Makefile.oden	2008-09-06 19:56:57.000000000 +0200
+@@ -1,17 +1,18 @@
+ PKGNAME= libwcat
+ PKGVERSION= 1.1
+ 
+-PREFIX ?= "/usr/local"
++PREFIX ?= "/usr"
+ 
+-CFLAGS+= -O2 -Wall -pedantic -fPIC
++CFLAGS+= -O2 -Wall -pedantic -fPIC -fPIC
+ #CFLAGS+= -O2 -Wall -pedantic -fPIC -ggdb
+ MAJOR=1
+ VER=1.1
++LDFLAGS=-Wl,--as-needed -Wl,--no-undefined
+ 
+ all: libwcat.so libwcat.a
+ 
+ libwcat.so: watchcat.o
+-	$(CC) -shared -Wl,-soname,libwcat.so.1 -olibwcat.so.$(MAJOR).$(VER) watchcat.o -lc
++	$(CC) -shared -Wl,-soname,libwcat.so.1 -olibwcat.so.$(MAJOR).$(VER) watchcat.o $(LDFLAGS) -lc
+ 
+ libwcat.a: watchcat.o
+ 	$(AR) cru libwcat.a watchcat.o

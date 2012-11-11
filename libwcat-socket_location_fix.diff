@@ -1,0 +1,11 @@
+--- watchcat.c	2008-08-27 22:27:34.000000000 +0200
++++ watchcat.c.oden	2008-09-06 19:59:27.000000000 +0200
+@@ -17,7 +17,7 @@
+ #include "watchcat.h"
+ 
+ 
+-static char DEVICE[CAT_DEVICE_SIZE] = "/var/run/watchcat.socket";
++static char DEVICE[CAT_DEVICE_SIZE] = "/var/lib/watchcat/watchcat.socket";
+ 
+ void cat_set_device(const char *dev)
+ {
