@@ -14,6 +14,7 @@ Patch0:		libwcat-ldflags.diff
 Patch1:		libwcat-socket_location_fix.diff
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
+BuildRequires:	make
 %description
 libwcat is an API to watchcatd, a software watchdog that uses an
 approach not as drastic as the usual watchdog solutions. It tries
